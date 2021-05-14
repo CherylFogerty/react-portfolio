@@ -1,23 +1,43 @@
-import React from 'react';
+import React, {useState } from 'react';
 import Nav from './components/Nav';
 import About from './components/About';
-import Contact from './components/Contact';
+import ContactForm from './components/Contact';
 import Footer from './components/Footer';
+
 import './App.css';
 
+
+
 function App() {
+  const [categories] = useState([
+    {
+      name: 'Portfolio',
+      description: 'projects',
+    },
+    { name: 'Contact', description: 'name, email, message'},
+    { name: 'Resume', description: 'job history'},
+  ]);
+
+  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+
+  const [contactSelected, setContactSelected] = useState(false);
+  
   return (
     <div> 
-      <Nav></Nav>
+      <Nav
+      categories={categories}
+      setCurrentCategory={setCurrentCategory}
+      currentCategory={currentCategory}
+      contactSelected={contactSelected}
+      setContactSelected={setContactSelected}
+      ></Nav>
       <main>
         <About></About>
-      </main>
-      <Contact></Contact>
-      <div>
+      <ContactForm></ContactForm>
       <Footer></Footer>
-      </div>
-    </div>
+        </main>
+        </div>
   );
-}
+};
 
 export default App;

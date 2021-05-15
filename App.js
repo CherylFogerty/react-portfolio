@@ -15,7 +15,6 @@ function App() {
       description: 'projects',
     },
     { name: 'Contact', description: 'name, email, message'},
-    { name: 'Resume', description: 'job history'},
   ]);
 
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
